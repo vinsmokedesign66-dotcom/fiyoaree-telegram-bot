@@ -39,7 +39,10 @@ def load_address_book(csv_file):
 BASE_DIR = os.path.dirname(__file__)
 CSV_PATH = os.path.join(BASE_DIR, "addresses.csv")
 
-ADDRESS_BOOK = load_address_book(CSV_PATH)
+try:
+    ADDRESS_BOOK = load_address_book(CSV_PATH)
+except FileNotFoundError:
+    raise Exception("addresses.csv not found on server")
 
 
 # /start
