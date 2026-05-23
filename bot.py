@@ -13,7 +13,7 @@ from telegram.ext import (
 )
 
 # ✅ FIXED: correct env variable name
-BOT_TOKEN = os.getenv("7683035959:AAG30ZqCweU3TsEe3RSM5x2lmzEJmWdtRKg")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # ❗ safety check (VERY IMPORTANT)
 if not BOT_TOKEN:
