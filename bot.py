@@ -13,7 +13,7 @@ from telegram.ext import (
 )
 
 # Get token correctly
-BOT_TOKEN = os.getenv("7683035959:AAG30ZqCweU3TsEe3RSM5x2lmzEJmWdtRKg")
+BOT_TOKEN = os.getenv("7683035959:AAFEQnvsiMGOnS15t6uCHTYC9eMYPrAG1R8")
 
 
 # Load addresses
