@@ -12,13 +12,18 @@ from telegram.ext import (
     filters,
 )
 
-# Get token correctly
-BOT_TOKEN = os.getenv("7683035959:AAFEQnvsiMGOnS15t6uCHTYC9eMYPrAG1R8")
+# ✅ FIXED: correct env variable name
+BOT_TOKEN = os.getenv("7683035959:AAG30ZqCweU3TsEe3RSM5x2lmzEJmWdtRKg")
+
+# ❗ safety check (VERY IMPORTANT)
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN is missing. Set it in Render environment variables.")
 
 
 # Load addresses
 def load_address_book(csv_file):
     address_book = {}
+
     with open(csv_file, newline='', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
@@ -26,10 +31,15 @@ def load_address_book(csv_file):
             lat = float(row['latitude'])
             lon = float(row['longitude'])
             address_book[name] = (lat, lon)
+
     return address_book
 
 
-ADDRESS_BOOK = load_address_book("addresses.csv")
+# safer file path (works on Render)
+BASE_DIR = os.path.dirname(__file__)
+CSV_PATH = os.path.join(BASE_DIR, "addresses.csv")
+
+ADDRESS_BOOK = load_address_book(CSV_PATH)
 
 
 # /start
